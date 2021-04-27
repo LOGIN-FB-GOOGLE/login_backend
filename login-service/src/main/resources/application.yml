@@ -1,4 +1,7 @@
 
+server:
+  port: 9001
+
 spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
@@ -19,3 +22,4 @@ jwt:
   expiration: 3600000
 
 secretPsw: kaslfdhyliudfshiuywrdhwlerawel
+

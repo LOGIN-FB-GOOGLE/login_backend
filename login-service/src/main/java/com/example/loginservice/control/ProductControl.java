@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -36,10 +38,11 @@ public class ProductControl {
     Response fakeData() {
         List<Product> lstProduct = (List<Product>) productRepository.findAll();
         List<Product> lstSave = new ArrayList<>();
+        NumberFormat numberFormat = new DecimalFormat("#0.00");
         for (int i = 0; i < lstProduct.size() + 10; i++) {
             Product product = new Product();
             product.setName("Product: " + i);
-            product.setPrice((50 - 10) * new Random().nextDouble());
+            product.setPrice(Double.valueOf(numberFormat.format((50 - 10) * new Random().nextDouble())));
             lstSave.add(product);
         }
         if (Objects.nonNull(lstSave)) {
